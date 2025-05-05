@@ -32,6 +32,7 @@ This stage ensures that both resumes and job descriptions are represented in a c
 Once the textual data has been embedded, the second phase performs semantic matching between resumes and the job description:
 a)	Cosine Similarity: For each resume embedding, cosine similarity is computed against the job description embedding. This metric quantifies the semantic closeness between two text vectors, with a score closer to 1 indicating higher similarity.
 ![Image](https://github.com/user-attachments/assets/f166d37d-7499-4fb9-8eec-9af8aed0a837)
+
 b)	Ranking: The system then sorts all resumes based on their similarity scores in descending order. This ranked list provides a prioritized view of candidates most relevant to the job, effectively automating the screening process.
 
 
