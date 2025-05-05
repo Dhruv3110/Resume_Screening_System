@@ -1,0 +1,24 @@
+Job Title: Data Scientist
+
+We are looking for a Data Scientist who will support our product, 
+sales, leadership, and marketing teams with insights gained from analyzing company data.
+
+The ideal candidate is adept at using large data sets to find opportunities 
+for product and process optimization and using models to test the effectiveness of different courses of action.
+
+They must have strong experience using a variety of data mining/data analysis methods, 
+using a variety of data tools, building and implementing models, 
+using/creating algorithms, and creating/running simulations.
+
+Responsibilities:
+- Work with stakeholders to identify opportunities for leveraging data.
+- Mine and analyze data from company databases to drive optimization and improvement.
+- Develop custom data models and algorithms.
+- Coordinate with different functional teams to implement models.
+
+Qualifications:
+- Strong problem-solving skills with an emphasis on product development.
+- Experience using statistical computer languages (Python, R, etc.) to manipulate data and draw insights.
+- Knowledge of machine learning techniques (clustering, decision tree, etc.)
+- Excellent written and verbal communication skills.
+- Bachelor’s or Master’s in Computer Science, Statistics, or a related field.
