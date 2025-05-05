@@ -44,86 +44,92 @@ ALGORITHM:
 
 PDFMiner Text Extraction Algorithm (file):
 
-Step 1: Open and Read the PDF File
-	1.1: Load the PDF file using PDF parser that reads the binary data
-	1.2: Create a PDF document object (PDFDocument) from the parser
-	1.3: Check if document allows text extraction using is_extractable
-Step 2: Interpret Document Structure
-2.1: A PDF resource manager (PDFResourceManager) to manage shared resources like fonts and images.
-2.2: A layout analyser (LAParams) to analyse layout and spacing between characters, words, and lines.
-Step 3: Process Each Page
-	3.1: For each page:
-3.1.1: Create a PDFPageInterpreter, passing in the resource manager and layout analyser.
-3.1.2: Feed the page into the interpreter, which builds a layout tree representing the visual structure.
-			[End of for each loop]
-	Step 4: Extract Text
-		4.1: Traverse this tree and collect text from text container elements.
-	Step 5: Accumulate the extracted text into a string.
-	Step 6: Stop
+	Step 1: Open and Read the PDF File
+		1.1: Load the PDF file using PDF parser that reads the binary data
+		1.2: Create a PDF document object (PDFDocument) from the parser
+		1.3: Check if document allows text extraction using is_extractable
+	Step 2: Interpret Document Structure
+	2.1: A PDF resource manager (PDFResourceManager) to manage shared resources like fonts and images.
+	2.2: A layout analyser (LAParams) to analyse layout and spacing between characters, words, and lines.
+	Step 3: Process Each Page
+		3.1: For each page:
+	3.1.1: Create a PDFPageInterpreter, passing in the resource manager and layout analyser.
+	3.1.2: Feed the page into the interpreter, which builds a layout tree representing the visual structure.
+				[End of for each loop]
+		Step 4: Extract Text
+			4.1: Traverse this tree and collect text from text container elements.
+		Step 5: Accumulate the extracted text into a string.
+		Step 6: Stop
 
 All-MiniLM-L6-v2 Embedding Model (Sentence):
 
-Step 1: Input the sequence of sentences
-Step 2: For each sentence:
-	2.1: Apply BERT Tokeniser (to convert it into a sequence of subword tokens)
-[End of For Each Loop]
-Step 3: For each token
-	3.1: Generate Initial Embedding Vectors
-Step 4: Pass the sequence of token embedding through 6 layers of the Transformer encoder
-	4.1: Each layer contains:
-		4.1.1: Calculate Attention Score for each token relative to all other tokens.
-	4.2: Apply a Feedforward network to the outputs of the self-attention mechanism
-[Step 4 is repeated 6 times]
-Step 5: Obtain the final token embeddings for each token 
-Step 6: Average the final token embeddings to obtain a single embedding for the sentence.
-Step 7: Return the sentence embedding for each sentence.
-Step 8: Stop
+	Step 1: Input the sequence of sentences
+	Step 2: For each sentence:
+		2.1: Apply BERT Tokeniser (to convert it into a sequence of subword tokens)
+	[End of For Each Loop]
+	Step 3: For each token
+		3.1: Generate Initial Embedding Vectors
+	Step 4: Pass the sequence of token embedding through 6 layers of the Transformer encoder
+		4.1: Each layer contains:
+			4.1.1: Calculate Attention Score for each token relative to all other tokens.
+		4.2: Apply a Feedforward network to the outputs of the self-attention mechanism
+	[Step 4 is repeated 6 times]
+	Step 5: Obtain the final token embeddings for each token 
+	Step 6: Average the final token embeddings to obtain a single embedding for the sentence.
+	Step 7: Return the sentence embedding for each sentence.
+	Step 8: Stop
 
 ![Image](https://github.com/user-attachments/assets/041e008e-d4be-47f6-a392-dc83c2703f98)
 
 PSEUDO-CODE OF PROPOSED SYSTEM
 
-1. LOAD pre-trained transformer model for sentence embeddings
-2. FUNCTION clean_text(text):
-    2.1: CONVERT text to lowercase
-    2.2: REPLACE multiple whitespaces with a single space
-    2.3: TRIM leading and trailing spaces
-    2.4: RETURN cleaned text
-3. FUNCTION extract_text_from_file(file_path):
-   3.1: IF the file extension is .pdf:
-        3.1.1: EXTRACT and RETURN text from PDF
-    ELSE IF file extension is .docx:
-        3.1.2: EXTRACT and RETURN text from DOCX
-    ELSE:
-        3.1.3: RETURN empty string
-4. FUNCTION load_resumes(folder_path):
-    4.1: INITIALISE empty dictionary resumes
-    4.2: FOR each file in folder_path:
-        4.2.1: IF file is .pdf or .docx:
-            4.2.1.1: full_path ← combine folder_path and file name
-            4.2.1.2: text ← extract_text_from_file(full_path)
-            4.2.1.3: cleaned_text ← clean_text(text)
-            4.2.1.4: ADD cleaned_text to resumes with filename as key
-    4.3: RETURN resumes dictionary
+1.LOAD pre-trained transformer model for sentence embeddings
+   
+2.FUNCTION clean_text(text):
+
+	2.1: CONVERT text to lowercase
+	2.2: REPLACE multiple whitespaces with a single space
+	2.3: TRIM leading and trailing spaces
+	2.4: RETURN cleaned text
+   
+3.FUNCTION extract_text_from_file(file_path):
+
+	3.1: IF the file extension is .pdf:
+		3.1.1: EXTRACT and RETURN text from PDF
+	ELSE IF file extension is .docx:
+		3.1.2: EXTRACT and RETURN text from DOCX
+	ELSE:
+		3.1.3: RETURN empty string
+   
+4.FUNCTION load_resumes(folder_path):
+
+	4.1: INITIALISE empty dictionary resumes
+	4.2: FOR each file in folder_path:
+	4.2.1: IF file is .pdf or .docx:
+		4.2.1.1: full_path ← combine folder_path and file name
+		4.2.1.2: text ← extract_text_from_file(full_path)
+		4.2.1.3: cleaned_text ← clean_text(text)
+		4.2.1.4: ADD cleaned_text to resumes with filename as key
+	4.3: RETURN resumes dictionary
 
 5.FUNCTION load_job_description(jd_path):
 
-    5.1: OPEN job description file
-    5.2: READ content into text
-    5.3: CLEAN text using the clean_text function
-    5.4: RETURN cleaned job description text
+	5.1: OPEN job description file
+	5.2: READ content into text
+	5.3: CLEAN text using the clean_text function
+	5.4: RETURN cleaned job description text
     
-6. FUNCTION compute_similarity(resumes_dict, jd_text):
+6.FUNCTION compute_similarity(resumes_dict, jd_text):
 
-    6.1: ENCODE job description text into embedding vector
-    6.2: INITIALISE empty result dictionary
-    6.3: FOR each resume in resumes_dict:
-        6.3.1: ENCODE resume text into embedding vector
-        6.3.2: CALCULATE cosine similarity between job description and resume embeddings
-        6.3.3: CONVERT similarity to percentage and ROUND to 2 decimal places
-        6.3.4: STORE percentage similarity in result dictionary with filename as key
-    6.4: SORT the result dictionary in descending order of similarity
-    6.5: RETURN sorted result dictionary
+	6.1: ENCODE job description text into embedding vector
+	6.2: INITIALISE empty result dictionary
+	6.3: FOR each resume in resumes_dict:
+		6.3.1: ENCODE resume text into embedding vector
+		6.3.2: CALCULATE cosine similarity between job description and resume embeddings
+		6.3.3: CONVERT similarity to percentage and ROUND to 2 decimal places
+		6.3.4: STORE percentage similarity in result dictionary with filename as key
+	6.4: SORT the result dictionary in descending order of similarity
+	6.5: RETURN sorted result dictionary
 
 RESULT AND DISCUSSION
 
