@@ -49,17 +49,17 @@ PDFMiner Text Extraction Algorithm (file):
 		1.2: Create a PDF document object (PDFDocument) from the parser
 		1.3: Check if document allows text extraction using is_extractable
 	Step 2: Interpret Document Structure
-	2.1: A PDF resource manager (PDFResourceManager) to manage shared resources like fonts and images.
-	2.2: A layout analyser (LAParams) to analyse layout and spacing between characters, words, and lines.
+		2.1: A PDF resource manager (PDFResourceManager) to manage shared resources like fonts and images.
+		2.2: A layout analyser (LAParams) to analyse layout and spacing between characters, words, and lines.
 	Step 3: Process Each Page
 		3.1: For each page:
-	3.1.1: Create a PDFPageInterpreter, passing in the resource manager and layout analyser.
-	3.1.2: Feed the page into the interpreter, which builds a layout tree representing the visual structure.
+			3.1.1: Create a PDFPageInterpreter, passing in the resource manager and layout analyser.
+			3.1.2: Feed the page into the interpreter, which builds a layout tree representing the visual structure.
 				[End of for each loop]
-		Step 4: Extract Text
-			4.1: Traverse this tree and collect text from text container elements.
-		Step 5: Accumulate the extracted text into a string.
-		Step 6: Stop
+	Step 4: Extract Text
+		4.1: Traverse this tree and collect text from text container elements.
+	Step 5: Accumulate the extracted text into a string.
+	Step 6: Stop
 
 All-MiniLM-L6-v2 Embedding Model (Sentence):
 
