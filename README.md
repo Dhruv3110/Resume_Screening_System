@@ -83,53 +83,43 @@ All-MiniLM-L6-v2 Embedding Model (Sentence):
 
 PSEUDO-CODE OF PROPOSED SYSTEM
 
-1.LOAD pre-trained transformer model for sentence embeddings
-   
-2.FUNCTION clean_text(text):
-
-	2.1: CONVERT text to lowercase
-	2.2: REPLACE multiple whitespaces with a single space
-	2.3: TRIM leading and trailing spaces
-	2.4: RETURN cleaned text
-   
-3.FUNCTION extract_text_from_file(file_path):
-
-	3.1: IF the file extension is .pdf:
-		3.1.1: EXTRACT and RETURN text from PDF
-	ELSE IF file extension is .docx:
-		3.1.2: EXTRACT and RETURN text from DOCX
-	ELSE:
-		3.1.3: RETURN empty string
-   
-4.FUNCTION load_resumes(folder_path):
-
-	4.1: INITIALISE empty dictionary resumes
-	4.2: FOR each file in folder_path:
-	4.2.1: IF file is .pdf or .docx:
-		4.2.1.1: full_path ← combine folder_path and file name
-		4.2.1.2: text ← extract_text_from_file(full_path)
-		4.2.1.3: cleaned_text ← clean_text(text)
-		4.2.1.4: ADD cleaned_text to resumes with filename as key
-	4.3: RETURN resumes dictionary
-
-5.FUNCTION load_job_description(jd_path):
-
-	5.1: OPEN job description file
-	5.2: READ content into text
-	5.3: CLEAN text using the clean_text function
-	5.4: RETURN cleaned job description text
-    
-6.FUNCTION compute_similarity(resumes_dict, jd_text):
-
-	6.1: ENCODE job description text into embedding vector
-	6.2: INITIALISE empty result dictionary
-	6.3: FOR each resume in resumes_dict:
-		6.3.1: ENCODE resume text into embedding vector
-		6.3.2: CALCULATE cosine similarity between job description and resume embeddings
-		6.3.3: CONVERT similarity to percentage and ROUND to 2 decimal places
-		6.3.4: STORE percentage similarity in result dictionary with filename as key
-	6.4: SORT the result dictionary in descending order of similarity
-	6.5: RETURN sorted result dictionary
+	1.LOAD pre-trained transformer model for sentence embeddings
+	2.FUNCTION clean_text(text):
+		2.1: CONVERT text to lowercase
+		2.2: REPLACE multiple whitespaces with a single space
+		2.3: TRIM leading and trailing spaces
+		2.4: RETURN cleaned text
+	3.FUNCTION extract_text_from_file(file_path):
+		3.1: IF the file extension is .pdf:
+			3.1.1: EXTRACT and RETURN text from PDF
+		ELSE IF file extension is .docx:
+			3.1.2: EXTRACT and RETURN text from DOCX
+		ELSE:
+			3.1.3: RETURN empty string
+	4.FUNCTION load_resumes(folder_path):
+		4.1: INITIALISE empty dictionary resumes
+		4.2: FOR each file in folder_path:
+		4.2.1: IF file is .pdf or .docx:
+			4.2.1.1: full_path ← combine folder_path and file name
+			4.2.1.2: text ← extract_text_from_file(full_path)
+			4.2.1.3: cleaned_text ← clean_text(text)
+			4.2.1.4: ADD cleaned_text to resumes with filename as key
+		4.3: RETURN resumes dictionary
+	5.FUNCTION load_job_description(jd_path):
+		5.1: OPEN job description file
+		5.2: READ content into text
+		5.3: CLEAN text using the clean_text function
+		5.4: RETURN cleaned job description text
+	6.FUNCTION compute_similarity(resumes_dict, jd_text):
+		6.1: ENCODE job description text into embedding vector
+		6.2: INITIALISE empty result dictionary
+		6.3: FOR each resume in resumes_dict:
+			6.3.1: ENCODE resume text into embedding vector
+			6.3.2: CALCULATE cosine similarity between job description and resume embeddings
+			6.3.3: CONVERT similarity to percentage and ROUND to 2 decimal places
+			6.3.4: STORE percentage similarity in result dictionary with filename as key
+		6.4: SORT the result dictionary in descending order of similarity
+		6.5: RETURN sorted result dictionary
 
 RESULT AND DISCUSSION
 
