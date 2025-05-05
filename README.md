@@ -6,6 +6,7 @@ In today’s fast-paced, technology-driven hiring landscape, Human Resource depa
 The core objective of the system is to automate resume filtering and present recruiters with a ranked list of candidates based on contextual relevance, allowing them to focus on higher-value tasks such as interviews and candidate engagement. Unlike traditional keyword-based filters, this approach captures deeper semantic relationships in text, enabling recognition of relevant skills and experience regardless of wording differences. The system is lightweight, scalable, and capable of delivering real-time results even on modest computational resources, making it suitable for enterprise-level and startup use alike. Ultimately, this solution demonstrates the practical and ethical potential of applying modern NLP to recruitment, paving the way for more intelligent, inclusive, and efficient hiring processes.
 
 INTRODUCTION
+
 The recruitment process has significantly evolved over the last decade due to digital technologies. However, a major challenge persists: the initial screening of resumes. Hiring managers often manually review hundreds or thousands of resumes, which is a time-consuming and biased process that can lead to the overlooking of qualified candidates.
 To address this issue, we introduce a Resume Screening System that employs advanced Natural Language Processing (NLP) techniques. This system uses the all-MiniLM-L6-v2 model, a transformer-based language representation model from the Sentence Transformers. This model converts text into fixed-size embeddings, effectively capturing semantic meaning and enhancing applications like semantic similarity, ranking, and information retrieval. The system extracts raw text from resumes in PDF or DOCX format using libraries like pdfminer and docx2txt. The text is processed to remove unnecessary characters, standardize formatting, and convert it to lowercase. It is then embedded into a high-dimensional vector space using the all-MiniLM-L6-v2 model. 
 The job description provided by the recruiter undergoes the same embedding process. The cosine similarity between the job description and each resume is calculated to determine relevance scores, allowing resumes to be ranked in descending order of match quality. This enables recruiters to quickly identify the most suitable candidates by going beyond simple keyword matching and understanding the context of the content, thereby improving the quality of matches. 
@@ -39,9 +40,10 @@ b)	Ranking: The system then sorts all resumes based on their similarity scores i
 
 IMPLEMENTATION DETAILS
 
-
 ALGORITHM:
+
 PDFMiner Text Extraction Algorithm (file):
+
 Step 1: Open and Read the PDF File
 	1.1: Load the PDF file using PDF parser that reads the binary data
 	1.2: Create a PDF document object (PDFDocument) from the parser
@@ -59,9 +61,8 @@ Step 3: Process Each Page
 	Step 5: Accumulate the extracted text into a string.
 	Step 6: Stop
 
-
-
 All-MiniLM-L6-v2 Embedding Model (Sentence):
+
 Step 1: Input the sequence of sentences
 Step 2: For each sentence:
 	2.1: Apply BERT Tokeniser (to convert it into a sequence of subword tokens)
@@ -81,6 +82,7 @@ Step 8: Stop
 ![Image](https://github.com/user-attachments/assets/041e008e-d4be-47f6-a392-dc83c2703f98)
 
 PSEUDO-CODE OF PROPOSED SYSTEM
+
 1. LOAD pre-trained transformer model for sentence embeddings
 2. FUNCTION clean_text(text):
     2.1: CONVERT text to lowercase
@@ -121,8 +123,9 @@ PSEUDO-CODE OF PROPOSED SYSTEM
     6.5: RETURN sorted result dictionary
 
 RESULT AND DISCUSSION
-    ![Image](https://github.com/user-attachments/assets/c403f97e-1713-42c0-936c-8c0a3bb774d2)
-    ![Image](https://github.com/user-attachments/assets/54f001d9-48f8-4198-8810-68f80760d459)
+
+![Image](https://github.com/user-attachments/assets/c403f97e-1713-42c0-936c-8c0a3bb774d2)
+![Image](https://github.com/user-attachments/assets/54f001d9-48f8-4198-8810-68f80760d459)
 
 CONCLUSION AND FUTURE SCOPE
 
