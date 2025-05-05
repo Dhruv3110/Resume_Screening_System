@@ -106,14 +106,15 @@ PSEUDO-CODE OF PROPOSED SYSTEM
             4.2.1.4: ADD cleaned_text to resumes with filename as key
     4.3: RETURN resumes dictionary
 
-
 5.FUNCTION load_job_description(jd_path):
+
     5.1: OPEN job description file
     5.2: READ content into text
     5.3: CLEAN text using the clean_text function
     5.4: RETURN cleaned job description text
     
 6. FUNCTION compute_similarity(resumes_dict, jd_text):
+
     6.1: ENCODE job description text into embedding vector
     6.2: INITIALISE empty result dictionary
     6.3: FOR each resume in resumes_dict:
