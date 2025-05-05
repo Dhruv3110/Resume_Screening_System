@@ -106,11 +106,13 @@ PSEUDO-CODE OF PROPOSED SYSTEM
             4.2.1.4: ADD cleaned_text to resumes with filename as key
     4.3: RETURN resumes dictionary
 
+
 5.FUNCTION load_job_description(jd_path):
     5.1: OPEN job description file
     5.2: READ content into text
     5.3: CLEAN text using the clean_text function
     5.4: RETURN cleaned job description text
+    
 6. FUNCTION compute_similarity(resumes_dict, jd_text):
     6.1: ENCODE job description text into embedding vector
     6.2: INITIALISE empty result dictionary
@@ -139,10 +141,17 @@ REFERNCES
 
 
 [1] Prathima, V., Singh, A., Rohilla, T., Rebbavarapu, V., & Anjum, N. (2024). Resume Application Tracking System with Google Gemini Pro. International Journal for Research in Applied Science and Engineering Technology.
+
 [2] Anand, S., & Giri, A. K. (2024). Optimizing Resume Design for ATS Compatibility: A Large Language Model Approach. International Journal on Smart & Sustainable Intelligent Computing, 1(2), 49-57.
+
 [3] Abdelhay, S., AlTalay, M. S. R., Selim, N., Altamimi, A. A., Hassan, D., Elbannany, M., & Marie, A. (2025). The impact of generative AI (Chatgpt) on recruitment efficiency and candidate quality: The mediating role of process automation level and the moderating role of organizational size. Frontiers in Human Dynamics, 6, 1487671.
+
 [4] Cohen, L., Hsieh, J., Hong, C., & Shen, J. H. (2025). Two Tickets are Better than One: Fair and Accurate Hiring Under Strategic LLM Manipulations. arXiv preprint arXiv:2502.13221
+
 [5] Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence embeddings using siamese BERT networks. arXiv preprint arXiv:1908.10084.
+
 [6] Wang, W., Wei, F., Dong, L., Bao, H., Yang, N., & Zhou, M. (2020). Minilm: Deep self-attention distillation for task-agnostic compression of pre-trained transformers. Advances in neural information processing systems, 33, 5776-5788.
+
 [7] Devlin, J., Chang, M. W., Lee, K., & Toutanova, K. (2019, June). Bert: Pre-training of deep bidirectional transformers for language understanding. In Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics: human language technologies, volume 1 (long and short papers) (pp. 4171-4186).
+
 [8] Kusner, M., Sun, Y., Kolkin, N., & Weinberger, K. (2015, June). From word embeddings to document distances. In International conference on machine learning (pp. 957-966). PMLR.
